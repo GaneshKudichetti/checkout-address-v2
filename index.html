@@ -3,137 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Checkout System</title>
+    <title>Optimized Mobile Checkout</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* --- Global Styles & Variables --- */
         :root {
-            --bg-color: #F8F9FA;
-            --card-bg: #FFFFFF;
-            --primary-text: #212529;
-            --secondary-text: #6C757D;
-            --border-color: #E0E0E0;
-            --accent-color: #4CAF50;
-            --accent-hover: #45a049;
-            --red-text: #DC3545;
-            --green-text: #28a745;
-            --purple-link: #5e35b1;
-            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            --radius-card: 16px;
-            --radius-btn: 24px;
-            --radius-input: 12px;
+            --bg-color: #F8F9FA; --card-bg: #FFFFFF; --primary-text: #212529; --secondary-text: #6C757D;
+            --border-color: #E0E0E0; --accent-color: #4CAF50; --accent-hover: #45a049; --red-text: #DC3545;
+            --green-text: #28a745; --purple-link: #5e35b1; --font-family: 'Inter', sans-serif;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08); --radius-card: 16px; --radius-btn: 24px; --radius-input: 12px;
         }
-
-        body {
-            margin: 0;
-            font-family: var(--font-family);
-            background-color: var(--bg-color);
-            color: var(--primary-text);
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 420px;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border-radius: var(--radius-card);
-            padding: 24px;
-            box-shadow: var(--shadow);
-            width: 100%;
-            box-sizing: border-box;
-            overflow: hidden; /* For animations */
-        }
-        
-        .page {
-            display: none;
-            animation: fadeIn 0.4s ease-in-out;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h1, h2, h3, h4 {
-            margin: 0 0 16px 0;
-            font-weight: 600;
-        }
+        body { margin: 0; font-family: var(--font-family); background-color: var(--bg-color); color: var(--primary-text); display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 20px; box-sizing: border-box; }
+        .container { width: 100%; max-width: 420px; }
+        .card { background-color: var(--card-bg); border-radius: var(--radius-card); padding: 24px; box-shadow: var(--shadow); width: 100%; box-sizing: border-box; overflow: hidden; }
+        .page { display: none; animation: fadeIn 0.4s ease-in-out; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        h1, h2 { margin: 0 0 16px 0; font-weight: 600; }
         h1 { font-size: 24px; text-align: center; }
         h2 { font-size: 18px; font-weight: 500; color: var(--secondary-text); margin-bottom: 12px; }
-
-        /* --- Buttons --- */
-        .btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 48px;
-            border-radius: var(--radius-btn);
-            border: none;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            padding: 0 20px;
-            box-sizing: border-box;
-            margin-top: 16px; /* Spacing between buttons */
-        }
-        .btn-primary {
-            background-color: var(--accent-color);
-            color: white;
-        }
-        .btn-primary:hover {
-            background-color: var(--accent-hover);
-        }
-        .arrow {
-            margin-left: auto;
-            font-size: 20px;
-        }
-
-        /* --- Form Elements --- */
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            font-size: 14px;
-            color: var(--secondary-text);
-            margin-bottom: 8px;
-        }
-        input[type="text"], input[type="tel"], textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-input);
-            font-size: 16px;
-            font-family: var(--font-family);
-            box-sizing: border-box;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-        input[type="text"]:focus, input[type="tel"]:focus, textarea:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
-        }
-        textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        /* --- Page 1: Address --- */
+        .btn { display: flex; justify-content: center; align-items: center; width: 100%; height: 48px; border-radius: var(--radius-btn); border: none; font-size: 16px; font-weight: 600; cursor: pointer; transition: background-color 0.3s ease; padding: 0 20px; box-sizing: border-box; margin-top: 16px; }
+        .btn-primary { background-color: var(--accent-color); color: white; }
+        .btn-primary:hover { background-color: var(--accent-hover); }
+        .arrow { margin-left: auto; font-size: 20px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 14px; color: var(--secondary-text); margin-bottom: 8px; }
+        input[type="text"], input[type="tel"], textarea { width: 100%; padding: 12px 16px; border: 1px solid var(--border-color); border-radius: var(--radius-input); font-size: 16px; font-family: var(--font-family); box-sizing: border-box; transition: border-color 0.3s, box-shadow 0.3s; }
+        input[type="text"]:focus, input[type="tel"]:focus, textarea:focus { outline: none; border-color: var(--accent-color); box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2); }
+        textarea { resize: vertical; min-height: 80px; }
         .search-container { position: relative; margin-bottom: 16px; }
         #search-input { width: 100%; padding-left: 16px; padding-right: 40px; }
         .clear-icon { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; font-size: 20px; color: var(--secondary-text); }
@@ -147,20 +43,15 @@
         .digipin-label { font-size: 16px; }
         .coords-label { font-size: 12px; color: var(--secondary-text); }
         .full-address { font-size: 14px; font-weight: 500; line-height: 1.5; }
-
-        /* --- Page 2: Details --- */
         .info-box, .address-preview-box { background-color: #f8f9fa; border-radius: var(--radius-input); padding: 16px; }
         .info-box p, .address-preview-box p { margin: 0; font-weight: 500; line-height: 1.6; }
         .mobile-input-wrapper { position: relative; }
         .validation-tick { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--green-text); font-size: 20px; opacity: 0; transition: opacity 0.3s ease; }
         .validation-tick.visible { opacity: 1; }
-
-        /* --- Page 3: Checkout --- */
         .order-item { display: flex; align-items: center; gap: 16px; padding: 16px; border: 1px solid var(--border-color); border-radius: var(--radius-card); margin-bottom: 24px; }
         .item-image { width: 60px; height: 60px; background-color: var(--bg-color); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--secondary-text); flex-shrink: 0; }
-        .item-info { flex-grow: 1; }
-        .item-info h3 { margin: 0 0 4px 0; font-size: 18px; }
-        .item-info p { margin: 0; font-size: 14px; color: var(--secondary-text); }
+        .item-info { flex-grow: 1; } .item-info h3, .option h4 { margin: 0 0 4px 0; font-size: 16px; }
+        .item-info p, .option p, .option small { margin: 0; font-size: 12px; color: var(--secondary-text); }
         .item-price { font-weight: 700; font-size: 16px !important; color: var(--red-text) !important; margin-top: 8px !important; }
         .quantity-selector { display: flex; align-items: center; gap: 12px; }
         .quantity-selector button { width: 32px; height: 32px; border: 1px solid var(--border-color); background-color: white; border-radius: 8px; font-size: 20px; font-weight: 500; cursor: pointer; color: var(--primary-text); }
@@ -168,10 +59,7 @@
         .payment-options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
         .option { display: flex; align-items: center; justify-content: space-between; padding: 16px; border: 1px solid var(--border-color); border-radius: var(--radius-card); cursor: pointer; transition: border-color 0.3s, box-shadow 0.3s; }
         .option.selected { border-color: var(--accent-color); box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3); }
-        .option h4 { font-size: 16px; margin: 0; }
-        .option p { font-size: 12px; color: var(--secondary-text); margin: 4px 0 0 0; }
         .option p a { color: var(--purple-link); text-decoration: none; }
-        .option small { font-size: 12px; color: var(--secondary-text); }
         .option-price { font-weight: 600; font-size: 16px; }
         .option-price.green { color: var(--green-text); }
         .option-price.red { color: var(--red-text); }
@@ -180,11 +68,10 @@
 <body>
     <div class="container">
         <main class="card">
-
             <div id="page-address" class="page active">
                 <header><h1>Add delivery address</h1></header>
                 <div class="search-container">
-                    <input type="text" id="search-input" placeholder="Search">
+                    <input type="text" id="search-input" placeholder="Search for area, street, or landmark">
                     <span class="clear-icon" id="clear-search">×</span>
                 </div>
                 <div class="map-container">
@@ -209,74 +96,28 @@
                     <label>Co-ordinates:</label>
                     <p id="details-coords-display">Loading...</p>
                 </div>
-                <div class="form-group">
-                    <label for="door-no">Door No: (optional)</label>
-                    <input type="text" id="door-no" placeholder="5-1-MK, AB Residency">
-                </div>
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" placeholder="Sidd">
-                </div>
-                <div class="form-group">
-                    <label for="mobile">Mobile:</label>
-                    <div class="mobile-input-wrapper">
-                        <input type="tel" id="mobile" placeholder="9234567890" maxlength="10">
-                        <span class="validation-tick" id="mobile-valid-tick">✓</span>
-                    </div>
-                </div>
-                <div class="form-group address-preview-box">
-                    <label>Your Full Address:</label>
-                    <p id="full-address-preview">Loading address...</p>
-                </div>
-                <div class="form-group">
-                    <label for="instructions">Instructions: (Optional)</label>
-                    <textarea id="instructions" rows="4"></textarea>
-                </div>
+                <div class="form-group"><label for="door-no">Door No: (optional)</label><input type="text" id="door-no" placeholder="5-1-MK, AB Residency"></div>
+                <div class="form-group"><label for="name">Name:</label><input type="text" id="name" placeholder="Sidd"></div>
+                <div class="form-group"><label for="mobile">Mobile:</label><div class="mobile-input-wrapper"><input type="tel" id="mobile" placeholder="9234567890" maxlength="10"><span class="validation-tick" id="mobile-valid-tick">✓</span></div></div>
+                <div class="form-group address-preview-box"><label>Your Full Address:</label><p id="full-address-preview">Loading address...</p></div>
+                <div class="form-group"><label for="instructions">Instructions: (Optional)</label><textarea id="instructions" rows="4"></textarea></div>
                 <button class="btn btn-primary" id="btn-to-checkout">Confirm <span class="arrow">→</span></button>
             </div>
 
             <div id="page-checkout" class="page">
-                <header class="order-details-header"><h2>Order Details</h2></header>
+                <header><h2>Order Details</h2></header>
                 <section class="order-item">
-                    <div class="item-image">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                    </div>
-                    <div class="item-info">
-                        <h3>Slides</h3>
-                        <p>Size: 9UK, Black</p>
-                        <p class="item-price">Rs. 999.00</p>
-                    </div>
-                    <div class="quantity-selector">
-                        <button id="qty-minus">-</button>
-                        <span id="qty-value">1</span>
-                        <button id="qty-plus">+</button>
-                    </div>
+                    <div class="item-image"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+                    <div class="item-info"><h3>Slides</h3><p>Size: 9UK, Black</p><p class="item-price">Rs. 999.00</p></div>
+                    <div class="quantity-selector"><button id="qty-minus">-</button><span id="qty-value">1</span><button id="qty-plus">+</button></div>
                 </section>
-                <header class="payment-options-header"><h2>Payment Options</h2></header>
+                <header><h2>Payment Options</h2></header>
                 <section class="payment-options">
-                    <div class="option" data-price="899.00">
-                        <div class="option-details">
-                            <h4>Debit on Delivery</h4>
-                            <p>One time upi mandate. <a href="#">KNOW MORE</a></p>
-                            <small>Save 100rs on this payment option</small>
-                        </div>
-                        <div class="option-price green">Rs. 899.00</div>
-                    </div>
-                    <div class="option selected" data-price="999.00">
-                        <h4>UPI</h4><div class="option-price">Rs. 999.00</div>
-                    </div>
-                    <div class="option" data-price="999.00">
-                        <h4>Cards</h4><div class="option-price">Rs. 999.00</div>
-                    </div>
-                    <div class="option" data-price="999.00">
-                        <h4>Netbanking</h4><div class="option-price">Rs. 999.00</div>
-                    </div>
-                    <div class="option" data-price="1199.00">
-                        <div class="option-details">
-                            <h4>COD</h4><small>+ 199rs Surcharge</small>
-                        </div>
-                        <div class="option-price red">Rs. 1199.00</div>
-                    </div>
+                    <div class="option" data-price="899.00"><div class="option-details"><h4>Debit on Delivery</h4><p>One time upi mandate. <a href="#">KNOW MORE</a></p><small>Save 100rs on this payment option</small></div><div class="option-price green">Rs. 899.00</div></div>
+                    <div class="option selected" data-price="999.00"><h4>UPI</h4><div class="option-price">Rs. 999.00</div></div>
+                    <div class="option" data-price="999.00"><h4>Cards</h4><div class="option-price">Rs. 999.00</div></div>
+                    <div class="option" data-price="999.00"><h4>Netbanking</h4><div class="option-price">Rs. 999.00</div></div>
+                    <div class="option" data-price="1199.00"><div class="option-details"><h4>COD</h4><small>+ 199rs Surcharge</small></div><div class="option-price red">Rs. 1199.00</div></div>
                 </section>
                 <button class="btn btn-primary" id="btn-pay-now">Pay Now <span class="arrow">→</span></button>
             </div>
@@ -288,40 +129,72 @@
         const checkoutData = JSON.parse(localStorage.getItem('checkoutData')) || {};
 
         function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
         }
 
+        // --- OPTIMIZATION: DEBOUNCE UTILITY ---
+        // This function prevents a function from being called too frequently.
+        function debounce(func, delay) {
+            let timeout;
+            return function(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), delay);
+            };
+        }
+
         // --- PAGE 1: ADDRESS SCRIPT ---
-        let map, geocoder;
+        let map, geocoder, autocomplete;
         const defaultLocation = { lat: 17.50383899, lng: 78.40651236 }; 
 
         function initMap() {
             map = new google.maps.Map(document.getElementById("map"), {
-                center: defaultLocation,
-                zoom: 16,
-                disableDefaultUI: true,
-                gestureHandling: "greedy",
+                center: defaultLocation, zoom: 16, disableDefaultUI: true, gestureHandling: "greedy",
             });
             geocoder = new google.maps.Geocoder();
+            const searchInput = document.getElementById('search-input');
+            autocomplete = new google.maps.places.Autocomplete(searchInput, {
+                fields: ["geometry", "name"],
+                componentRestrictions: { country: "in" }, // Restrict search to India
+            });
 
+            // Create a debounced version of the update function
+            const debouncedUpdate = debounce(latLng => {
+                updateLocationDetails(latLng.lat(), latLng.lng());
+            }, 500); // 500ms delay
+
+            // Listen for map movements, but use the debounced function
             map.addListener("idle", () => {
-                const center = map.getCenter();
-                updateLocationDetails(center.lat(), center.lng());
+                debouncedUpdate(map.getCenter());
+            });
+
+            // When a place is selected from search
+            autocomplete.addListener('place_changed', () => {
+                const place = autocomplete.getPlace();
+                if (place.geometry && place.geometry.location) {
+                    map.setCenter(place.geometry.location);
+                    map.setZoom(17);
+                } else {
+                    alert("Could not find the location for: " + place.name);
+                }
             });
             
-            updateLocationDetails(defaultLocation.lat, defaultLocation.lng); // Initial load
+            // Initial load
+            updateLocationDetails(defaultLocation.lat, defaultLocation.lng);
 
+            // Button functionalities
             document.getElementById('use-location-btn').addEventListener('click', () => {
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(pos => {
                         map.setCenter({ lat: pos.coords.latitude, lng: pos.coords.longitude });
-                    }, () => alert("Could not get your location."));
+                    }, () => alert("Could not get your location. Please enable location services."));
                 } else {
                     alert("Geolocation is not supported by this browser.");
                 }
+            });
+            document.getElementById('clear-search').addEventListener('click', () => {
+                searchInput.value = '';
+                searchInput.focus();
             });
         }
 
@@ -348,39 +221,24 @@
         }
         
         function Get_DIGIPIN(lat, lon) {
-            var L=[['F','C','9','8'],['J','3','2','7'],['K','4','5','6'],['L','M','P','T']];
-            var vDIGIPIN = '';
-            var MinLat = 2.5, MaxLat = 38.50, MinLon = 63.50, MaxLon = 99.50;
+            const L=[['F','C','9','8'],['J','3','2','7'],['K','4','5','6'],['L','M','P','T']];
+            let vDIGIPIN = '', MinLat = 2.5, MaxLat = 38.50, MinLon = 63.50, MaxLon = 99.50;
             if (lat < MinLat || lat > MaxLat || lon < MinLon || lon > MaxLon) return 'Out of Range';
             for (let Lvl = 1; Lvl <= 10; Lvl++) {
                 let LatDivDeg = (MaxLat - MinLat) / 4, LonDivDeg = (MaxLon - MinLon) / 4;
-                let NextLvlMaxLat = MaxLat, NextLvlMinLat = MaxLat - LatDivDeg;
-                let row = 0, column = 0;
-                for (let x = 0; x < 4; x++) {
-                    if (lat >= NextLvlMinLat && lat < NextLvlMaxLat) { row = x; break; } 
-                    else { NextLvlMaxLat = NextLvlMinLat; NextLvlMinLat = NextLvlMaxLat - LatDivDeg; }
-                }
+                let NextLvlMaxLat = MaxLat, NextLvlMinLat = MaxLat - LatDivDeg, row = 0, column = 0;
+                for (let x = 0; x < 4; x++) { if (lat >= NextLvlMinLat && lat < NextLvlMaxLat) { row = x; break; } else { NextLvlMaxLat = NextLvlMinLat; NextLvlMinLat = NextLvlMaxLat - LatDivDeg; } }
                 let NextLvlMinLon = MinLon, NextLvlMaxLon = MinLon + LonDivDeg;
-                for (let x = 0; x < 4; x++) {
-                    if (lon >= NextLvlMinLon && lon < NextLvlMaxLon) { column = x; break; } 
-                    else if ((NextLvlMinLon + LonDivDeg) < MaxLon) { NextLvlMinLon = NextLvlMaxLon; NextLvlMaxLon = NextLvlMinLon + LonDivDeg; } 
-                    else { column = x; }
-                }
+                for (let x = 0; x < 4; x++) { if (lon >= NextLvlMinLon && lon < NextLvlMaxLon) { column = x; break; } else if ((NextLvlMinLon + LonDivDeg) < MaxLon) { NextLvlMinLon = NextLvlMaxLon; NextLvlMaxLon = NextLvlMinLon + LonDivDeg; } else { column = x; } }
                 vDIGIPIN += L[row][column];
                 if (Lvl == 3 || Lvl == 6) vDIGIPIN += "-";
-                MinLat = NextLvlMinLat; MaxLat = NextLvlMaxLat;
-                MinLon = NextLvlMinLon; MaxLon = NextLvlMaxLon;
+                MinLat = NextLvlMinLat; MaxLat = NextLvlMaxLat; MinLon = NextLvlMinLon; MaxLon = NextLvlMaxLon;
             }
             return vDIGIPIN;
         }
 
         // --- PAGE 2: DETAILS SCRIPT ---
-        const detailsCoordsDisplay = document.getElementById('details-coords-display');
-        const addressPreview = document.getElementById('full-address-preview');
-        const doorNoInput = document.getElementById('door-no');
-        const nameInput = document.getElementById('name');
-        const mobileInput = document.getElementById('mobile');
-        const mobileTick = document.getElementById('mobile-valid-tick');
+        const detailsCoordsDisplay = document.getElementById('details-coords-display'), addressPreview = document.getElementById('full-address-preview'), doorNoInput = document.getElementById('door-no'), nameInput = document.getElementById('name'), mobileInput = document.getElementById('mobile'), mobileTick = document.getElementById('mobile-valid-tick');
         
         function populateDetailsPage() {
             detailsCoordsDisplay.textContent = checkoutData.coords || 'N/A';
@@ -388,30 +246,20 @@
         }
 
         function updateAddressPreview() {
-            const doorNo = doorNoInput.value.trim();
-            const baseAddress = checkoutData.address || 'Address not found.';
-            const name = nameInput.value.trim() || '[Name]';
-            const mobile = mobileInput.value.trim() || '[Mobile]';
+            const name = nameInput.value.trim() || '[Name]', mobile = mobileInput.value.trim() || '[Mobile]', doorNo = doorNoInput.value.trim(), baseAddress = checkoutData.address || 'Address not found.';
             addressPreview.innerHTML = `<b>${name}</b>, ${mobile}<br>${doorNo ? doorNo + ',' : ''}<br>${baseAddress}`;
         }
         
-        doorNoInput.addEventListener('input', updateAddressPreview);
-        nameInput.addEventListener('input', updateAddressPreview);
+        [doorNoInput, nameInput, mobileInput].forEach(el => el.addEventListener('input', updateAddressPreview));
         mobileInput.addEventListener('input', () => {
             mobileInput.value = mobileInput.value.replace(/[^0-9]/g, '');
             mobileTick.classList.toggle('visible', mobileInput.value.length === 10);
-            updateAddressPreview();
         });
 
         // --- PAGE 3: CHECKOUT SCRIPT ---
         const qtyValue = document.getElementById('qty-value');
-        document.getElementById('qty-plus').addEventListener('click', () => {
-            qtyValue.textContent = parseInt(qtyValue.textContent) + 1;
-        });
-        document.getElementById('qty-minus').addEventListener('click', () => {
-            let qty = parseInt(qtyValue.textContent);
-            if (qty > 1) qtyValue.textContent = qty - 1;
-        });
+        document.getElementById('qty-plus').addEventListener('click', () => qtyValue.textContent++);
+        document.getElementById('qty-minus').addEventListener('click', () => { if (qtyValue.textContent > 1) qtyValue.textContent--; });
         document.querySelectorAll('.payment-options .option').forEach(option => {
             option.addEventListener('click', () => {
                 document.querySelector('.payment-options .option.selected').classList.remove('selected');
@@ -421,33 +269,24 @@
 
         // --- NAVIGATION BUTTONS ---
         document.getElementById('btn-to-details').addEventListener('click', () => {
-            if (!checkoutData.coords || !checkoutData.address) {
-                alert('Please set a valid location first.');
-                return;
-            }
-            populateDetailsPage();
-            showPage('page-details');
+            if (!checkoutData.coords || !checkoutData.address || checkoutData.address.includes('could not be determined')) return alert('Please set a valid location first.');
+            populateDetailsPage(); showPage('page-details');
         });
 
         document.getElementById('btn-to-checkout').addEventListener('click', () => {
-            const name = nameInput.value.trim();
-            const mobile = mobileInput.value.trim();
-            if (!name) return alert('Please enter your name.');
-            if (mobile.length !== 10) return alert('Please enter a valid 10-digit mobile number.');
+            if (!nameInput.value.trim()) return alert('Please enter your name.');
+            if (mobileInput.value.trim().length !== 10) return alert('Please enter a valid 10-digit mobile number.');
             
-            checkoutData.doorNo = doorNoInput.value.trim();
-            checkoutData.name = name;
-            checkoutData.mobile = mobile;
-            checkoutData.instructions = document.getElementById('instructions').value.trim();
+            checkoutData.doorNo = doorNoInput.value.trim(); checkoutData.name = nameInput.value.trim(); checkoutData.mobile = mobileInput.value.trim(); checkoutData.instructions = document.getElementById('instructions').value.trim();
             localStorage.setItem('checkoutData', JSON.stringify(checkoutData));
             showPage('page-checkout');
         });
         
         document.getElementById('btn-pay-now').addEventListener('click', () => {
-            alert('Payment processing logic would go here!\n\nOrder Details:\n' + JSON.stringify(checkoutData, null, 2));
+            alert('Payment processing logic would go here!\n\nFinal Order Details:\n' + JSON.stringify(checkoutData, null, 2));
         });
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap&libraries=places&v=weekly" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN3L9gYsZpD2_BYRfElnPbRPVQb6sPufg&callback=initMap&libraries=places&v=weekly" async defer></script>
 </body>
 </html>
